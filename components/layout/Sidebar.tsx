@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../core/auth/useAuth';
 import { UserRole } from '../../types';
 import { HomeIcon, AttendanceIcon, WorkIcon, MaterialsIcon, TasksIcon, AdminIcon, BriefcaseIcon, LogoIcon, LogoText, LogOutIcon } from '../icons';
 

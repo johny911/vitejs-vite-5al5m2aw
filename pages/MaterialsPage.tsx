@@ -9,7 +9,7 @@ import Stepper from '../components/ui/Stepper';
 import Input from '../components/ui/Input';
 import { Material } from '../types';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../core/auth/supabase';
 import SkeletonCard from '../components/ui/SkeletonCard';
 import PageStatus from '../components/ui/PageStatus';
 import { BoxIcon } from '../components/icons';

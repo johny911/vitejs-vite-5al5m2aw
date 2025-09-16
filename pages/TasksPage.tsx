@@ -10,7 +10,7 @@ import Select from '../components/ui/Select';
 import Textarea from '../components/ui/Textarea';
 import { PlusIcon, ClockIcon, FlagIcon, AlertTriangleIcon, ClipboardListIcon } from '../components/icons';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../core/auth/supabase';
 import SkeletonCard from '../components/ui/SkeletonCard';
 import PageStatus from '../components/ui/PageStatus';
 

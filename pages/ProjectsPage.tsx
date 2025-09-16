@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Project, UserRole } from '../types';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../core/auth/useAuth';
 import Card from '../components/ui/Card';
 import Input from '../components/ui/Input';
 import { ChevronRightIcon, BriefcaseIcon } from '../components/icons';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../core/auth/supabase';
 import SkeletonCard from '../components/ui/SkeletonCard';
 import PageStatus from '../components/ui/PageStatus';
 

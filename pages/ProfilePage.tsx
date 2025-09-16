@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../core/auth/useAuth';
 import { ChevronRightIcon, UserIcon, BellIcon, HelpCircleIcon, InfoIcon, LogOutIcon, RefreshCwIcon } from '../components/icons';
 import PageHeader from '../components/ui/PageHeader';
 import Modal from '../components/ui/Modal';

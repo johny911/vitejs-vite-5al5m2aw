@@ -8,7 +8,7 @@ import DateInput from '../components/ui/DateInput';
 import Stepper from '../components/ui/Stepper';
 import { AttendanceRecord, Project, LabourTeam, LabourType } from '../types';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../core/auth/supabase';
 import { useNavigate } from 'react-router-dom';
 import SkeletonCard from '../components/ui/SkeletonCard';
 

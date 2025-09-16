@@ -9,7 +9,7 @@ import Button from '../components/ui/Button';
 import Input from '../components/ui/Input';
 import Select from '../components/ui/Select';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../core/auth/supabase';
 import SkeletonCard from '../components/ui/SkeletonCard';
 
 type AdminTab = 'Users' | 'Projects' | 'Masters' | 'Materials';

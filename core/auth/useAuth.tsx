@@ -6,9 +6,10 @@ import React, {
   useMemo,
   useEffect,
 } from 'react';
-import { supabase, ensureSession } from '../lib/supabase';
-import { User as AppUser, UserRole } from '../types';
+import { supabase, ensureSession } from './supabaseClient';
+import { User as AppUser, UserRole } from '../../types';
 import { Session } from '@supabase/supabase-js';
+import SplashScreen from '../../components/SplashScreen';
 
 interface AuthContextType {
   user: AppUser | null;
@@ -27,9 +28,10 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AuthGate: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AppUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [booted, setBooted] = useState(false);
 
   // --- Profile fetcher ---
   const fetchUserProfile = async (session: Session | null): Promise<AppUser | null> => {
@@ -73,7 +75,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         console.error('[Auth] Init session failed:', err);
         if (mounted) setUser(null);
       } finally {
-        if (mounted) setLoading(false);
+        if (mounted) {
+          setLoading(false);
+          setBooted(true); // mark first load complete
+        }
       }
     };
 
@@ -203,13 +208,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     [user, loading]
   );
 
+  // --- Boot splash logic ---
+  if (!booted) {
+    return <SplashScreen />;
+  }
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('useAuth must be used within an AuthGate');
   }
   return context;
 };

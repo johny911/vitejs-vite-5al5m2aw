@@ -5,7 +5,7 @@ import { Project, Task } from '../types';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../core/auth/supabase';
 
 const ProjectDetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
