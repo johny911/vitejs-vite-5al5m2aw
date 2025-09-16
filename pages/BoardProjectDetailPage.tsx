@@ -7,7 +7,7 @@ import Modal from '../components/ui/Modal';
 import Button from '../components/ui/Button';
 import { AttendanceIcon, MaterialsIcon, UsersIcon, BoxIcon } from '../components/icons';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 
 const statusColors: Record<Project['status'], string> = {
     Ongoing: 'bg-blue-100 text-blue-800',

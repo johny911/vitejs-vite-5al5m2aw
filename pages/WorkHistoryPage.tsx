@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import Card from '../components/ui/Card';
 import PageHeader from '../components/ui/PageHeader';
 import { WorkReport, LabourTeam, LabourType, Material, Project } from '../types';

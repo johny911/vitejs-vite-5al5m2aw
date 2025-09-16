@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import Card from '../components/ui/Card';
 import PageHeader from '../components/ui/PageHeader';
 import { UsersIcon, ChevronRightIcon, DownloadIcon } from '../components/icons';
 import Modal from '../components/ui/Modal';
 import Button from '../components/ui/Button';
 import PdfReportLayout from '../components/pdf/PdfReportLayout';
-import { useAuth } from '../core/auth/useAuth';
+import { useAuth } from '../hooks/useAuth';
 import SkeletonCard from '../components/ui/SkeletonCard';
 
 // Declare global variables from CDN scripts for TypeScript

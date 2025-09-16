@@ -9,7 +9,7 @@ import Input from '../components/ui/Input';
 import Stepper from '../components/ui/Stepper';
 import { PlusIcon, TrashIcon, BoxIcon, UsersIcon, CheckCircleIcon, XCircleIcon, WorkIcon, EditIcon, FileTextIcon, HistoryIcon } from '../components/icons';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import ViewReportModal from '../components/modals/ViewReportModal';
 import { useNavigate } from 'react-router-dom';
 

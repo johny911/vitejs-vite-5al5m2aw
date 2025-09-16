@@ -6,7 +6,7 @@ import { UsersIcon, ChevronDownIcon, ChevronRightIcon, RupeeIcon, AlertTriangleI
 import DateInput from '../components/ui/DateInput';
 import DistributionBar from '../components/charts/DistributionBar';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import SkeletonCard from '../components/ui/SkeletonCard';
 
 type FilterType = 'today' | 'yesterday' | 'range';

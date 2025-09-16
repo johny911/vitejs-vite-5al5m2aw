@@ -4,7 +4,7 @@ import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import { LabourTeam, LabourType, Material } from '../../types';
 import { UsersIcon, BoxIcon, DownloadIcon } from '../icons';
-import { useAuth } from '../../core/auth/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import PdfReportLayout from '../pdf/PdfReportLayout';
 
 // Declare global variables from CDN scripts for TypeScript

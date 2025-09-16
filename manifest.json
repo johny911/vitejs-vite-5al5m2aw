@@ -41,16 +41,12 @@
     {
       "src": "/icons/icon-512x512.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
+      "sizes": "512x512"
     }
   ],
-  "start_url": "/",
-  "scope": "/",
+  "start_url": ".",
   "display": "standalone",
-  "orientation": "portrait",
   "theme_color": "#2563eb",
   "background_color": "#f1f5f9",
-  "description": "A modern PWA for construction management.",
-  "categories": ["productivity", "business"]
+  "description": "A modern PWA for construction management."
 }

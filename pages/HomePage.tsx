@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
-import { useAuth } from '../core/auth/useAuth';
+import { useAuth } from '../hooks/useAuth';
 import { ChevronRightIcon, AttendanceIcon, AlertTriangleIcon, BoxIcon, ClipboardListIcon, FlagIcon, ClockIcon } from '../components/icons';
 import { Task, Material } from '../types';
 import WeeklyProgressChart from '../components/charts/WeeklyProgressChart';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import PageStatus from '../components/ui/PageStatus';
 import SkeletonCard from '../components/ui/SkeletonCard';
 

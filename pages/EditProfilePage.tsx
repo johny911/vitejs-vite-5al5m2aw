@@ -1,12 +1,12 @@
 
 import React, { useState, useRef } from 'react';
-import { useAuth } from '../core/auth/useAuth';
+import { useAuth } from '../hooks/useAuth';
 import Card from '../components/ui/Card';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import { EditIcon } from '../components/icons';
 
 const EditProfilePage: React.FC = () => {

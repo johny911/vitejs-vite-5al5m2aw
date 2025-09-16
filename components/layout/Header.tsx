@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../core/auth/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import { UserRole } from '../../types';
 import { ArrowLeftIcon } from '../icons';
 

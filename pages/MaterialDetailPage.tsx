@@ -5,7 +5,7 @@ import Card from '../components/ui/Card';
 import { Material, MaterialTransaction } from '../types';
 import { ArrowUpCircleIcon, ArrowDownCircleIcon } from '../components/icons';
 import PageHeader from '../components/ui/PageHeader';
-import { supabase } from '../core/auth/supabase';
+import { supabase } from '../lib/supabase';
 import SkeletonCard from '../components/ui/SkeletonCard';
 
 const MaterialDetailPage: React.FC = () => {
