@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 22V4a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v18'/%3E%3Cpath d='m12 13 4.5 4.5'/%3E%3Cpath d='m12 13 7.5-7.5'/%3E%3C/svg%3E"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConstructFlow</title>
+    <meta
+      name="description"
+      content="ConstructFlow – A modern PWA for construction management and labour tracking."
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#2563eb" />
+
+    <!-- iOS PWA support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ConstructFlow" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        font-family: 'Inter', sans-serif;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes modal-fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes modal-content-scale-up {
+        from {
+          transform: scale(0.95);
+          opacity: 0.8;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes splash-logo-in {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes splash-text-in {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-in-out forwards;
+      }
+      .animate-page-fade-in {
+        animation: fadeIn 0.4s ease-in-out forwards;
+      }
+    </style>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+              },
+              neutral: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                400: '#94a3b8',
+                500: '#64748b',
+                600: '#475569',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://aistudiocdn.com/react@^19.1.1",
+          "react/": "https://aistudiocdn.com/react@^19.1.1/",
+          "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.8.2",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+          "react-dom": "https://aistudiocdn.com/react-dom@^19.1.1",
+          "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+          "path": "https://aistudiocdn.com/path@^0.12.7",
+          "vite": "https://aistudiocdn.com/vite@^7.1.5",
+          "module": "https://aistudiocdn.com/module@^1.2.5"
+        }
+      }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-neutral-100">
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(
+            (registration) => {
+              console.log('[SW] Registered with scope:', registration.scope);
+
+              // 🔔 Listen for new versions
+              registration.onupdatefound = () => {
+                const newWorker = registration.installing;
+                newWorker.onstatechange = () => {
+                  if (
+                    newWorker.state === 'installed' &&
+                    navigator.serviceWorker.controller
+                  ) {
+                    window.dispatchEvent(new Event('sw.updated'));
+                  }
+                };
+              };
+            },
+            (err) => {
+              console.log('[SW] Registration failed:', err);
+            }
+          );
+        });
+      }
+    </script>
+
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
